@@ -1,4 +1,6 @@
-# YNU-LMS-Extension v1.0.1
+# YNU-LMS-Extension  
+![MIT LICENSE](https://img.shields.io/github/license/kurikin/YNU-LMS-Extension?style=flat-square)
+![v1.0.1](https://img.shields.io/github/manifest-json/v/kurikin/YNU-LMS-Extension?style=flat-square)
 
 未実施の課題・テスト情報を取得して、LMSに一覧表示するChrome拡張です。
 
