@@ -31,13 +31,14 @@ class Homework {
 }
 
 function injectHeader() {
-    // 「未実施の課題」を表示
     const upperElement = document.querySelector("#cs_loginInfo");
 
+    // ヘッダーの親要素を追加
     const parent = document.createElement("div");
     parent.id = "homework_list";
     upperElement.after(parent);
 
+    // 「未実施の課題」を表示
     const header = document.createElement("div");
     header.id = "main";
     header.style.marginLeft = "3px";
