@@ -148,7 +148,7 @@ async function fetchHomeworks(uniqueLecIds) {
                 const target = elt.parentElement;
 
                 let isOpen = false;
-                let notCompleted = false;
+                let completed = true;
 
                 // 1. 公開状態のチェック
                 const spans = target.getElementsByTagName("span");
@@ -162,11 +162,11 @@ async function fetchHomeworks(uniqueLecIds) {
                 const submitStatus = target.getElementsByClassName("td03")[0].innerText;
 
                 if (submitStatus.includes("期限")) {
-                    notCompleted = true;
+                    completed = false;
                 }
 
                 // ＜公開中 or 延長受付中＞ かつ ＜未提出＞の場合
-                if (isOpen && notCompleted) {
+                if (isOpen && !completed) {
                     const title = target.getElementsByTagName("a")[0].innerText;
                     const lecName = extractLecName(originalLecName);
                     const type = generateTypeFromId(id);
