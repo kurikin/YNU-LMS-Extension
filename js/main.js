@@ -149,7 +149,7 @@ async function fetchHomeworks(uniqueLecIds) {
                 const target = elt.parentElement;
 
                 let isOpen = false;
-                let completed = true;
+                let isSubmitted = true;
 
                 // 1. 公開状態のチェック
                 const spans = target.getElementsByTagName("span");
@@ -163,11 +163,11 @@ async function fetchHomeworks(uniqueLecIds) {
                 const submitStatus = target.getElementsByClassName("td03")[0].innerText;
 
                 if (submitStatus.includes("期限")) {
-                    completed = false;
+                    isSubmitted = false;
                 }
 
                 // ＜公開中 or 延長受付中＞ かつ ＜未提出＞の場合
-                if (isOpen && !completed) {
+                if (isOpen && !isSubmitted) {
                     const title = target.getElementsByTagName("a")[0].innerText;
                     const lecName = extractLecName(originalLecName);
                     const type = generateTypeFromId(id);
@@ -183,7 +183,8 @@ async function fetchHomeworks(uniqueLecIds) {
             }
         }
         // 最終要素の取得時はsleepなし
-        if (i != lecNum - 1) await sleep(500);
+        if (i == lecNum - 1) break;
+        await sleep(500);
     }
 
     // プログレスバーとラベルを削除
